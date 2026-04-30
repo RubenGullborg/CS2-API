@@ -9,6 +9,7 @@ Each skin object returned by the API looks like this:
 
 ```json
 {
+  "id": 10,
   "name": "MP7 | Whiteout",
   "weapon": "MP7",
   "rarity": "Mil-Spec",
@@ -45,18 +46,16 @@ Fetch the full list of skins or filter by specific attributes.
   `GET /api/skins?weapon=MP7&rarity=Mil-Spec`
 
 ### 3. Get Skin by ID
-Retrieve the full details of a specific skin using its `imageid`.
-- **URL:** `/api/skins/{imageid}`
+Retrieve the full details of a specific skin using its unique numeric ID..
+- **URL:** `/api/skins/{skin_id}`
 - **Method:** `GET`
-- **Path Parameter:** `imageid` (The unique ID or Steam hash from the data)
+- **Path Parameter:** `skin_id`
 - **Example Request:** 
   `GET /api/skins/10`
 
 ---
 
-> **Note on Images:** The `image_url` is automatically generated. If the `imageid` is a number, it points to your GitHub Pages hosting. If it's a full URL, the API provides the direct Steam CDN link.
-
-
+> **Note on Images:** The `image_url` is automatically generated. If the `imageid` is a number, it points to my GitHub Pages hosting. If it's a full Steam URL, the API will provide the direct Steam CDN link instead. This is a bit messy as it can lead to `imageId` and `image_url` being identical, but it's the result of fusioning multiple data sources, to get as many unique skins as possible.
 
 ### Important: We're on Free Tier
 Since this is hosted on **Render's Free Tier**, the server "sleeps" after 15 minutes of inactivity. The first request after a break may take **40-60 seconds** to return a response, while the server boots up. Subsequent requests will be faster.
