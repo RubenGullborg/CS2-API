@@ -56,9 +56,9 @@ def get_skins(
         
     return {"total": len(results), "skins": results}
 
-@app.get("/api/skins/{imageid}")
-def get_skin_by_id(imageid: str):
+@app.get("/api/skins/{skin_id}")
+def get_skin_by_id(skin_id: int):
     for skin in skins_data:
-        if str(skin.get("imageid")) == str(imageid):
+        if skin.get("id") == skin_id:
             return skin
-    return {"error": "Skin not found"}
+    raise HTTPException(status_code=404, detail="Skin not found")
