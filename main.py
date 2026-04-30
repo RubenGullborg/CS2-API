@@ -41,8 +41,9 @@ def root():
 
 @app.get("/api/skins")
 def get_skins(
-    weapon: str = Query(None, description="Filter by weapon (e.g., MP7)"),
-    rarity: str = Query(None, description="Filter by rarity (e.g., Mil-Spec)")
+    weapon: str = Query(None, description="Filter by weapon (e.g., MP7, AK-47...)"),
+    rarity: str = Query(None, description="Filter by rarity (e.g., Mil-Spec, Covert...)"),
+    category: str = Query(None, description="Filter by category (e.g., Rifle, SMGs, Heavy...)")
 ):
     results = skins_data
     
