@@ -51,6 +51,8 @@ def get_skins(
         results = [skin for skin in results if skin.get("weapon", "").lower() == weapon.lower()]
     if rarity:
         results = [skin for skin in results if skin.get("rarity", "").lower() == rarity.lower()]
+    if category:
+        results = [skin for skin in results if skin.get("category", "").lower() == category.lower()]
         
     return {"total": len(results), "skins": results}
 
